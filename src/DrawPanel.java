@@ -51,7 +51,9 @@ class DrawPanel extends JPanel implements MouseListener {
         g.drawString("Number of cards left: " + d.getDeck().size(), x, y + 100);
         g.drawRect(300, 10, 150,65);
         g.drawRect(300, 210, 150,65);
-
+        if (d.hasLost(cards) == true){
+            g.drawString("Game Over", 150,  250);
+        }
 
     }
 
@@ -80,10 +82,16 @@ class DrawPanel extends JPanel implements MouseListener {
             }
             xValue.clear();
             yValue.clear();
-            if (d.hasLost(cards) == true){
-                System.out.println("over");
-            }
 
+        }
+        else if (replace.contains(pointA)){
+            cards = new Card[3][3];
+            d = new Deck();
+            for (int r = 0; r < cards.length; r++) {
+                for (int c = 0; c < cards.length; c++) {
+                    cards[r][c] = d.getRandomCard();
+                }
+            }
         }
         else{
             xValue.add((int) pointA.getX());
