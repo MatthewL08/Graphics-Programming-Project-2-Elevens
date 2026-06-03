@@ -97,7 +97,7 @@ class DrawPanel extends JPanel implements MouseListener {
             yValue.clear();
 
         }
-        else if (replace.contains(pointA)){
+        else if (reset.contains(pointA)){
             cards = new Card[3][3];
             d = new Deck();
             for (int r = 0; r < cards.length; r++) {
