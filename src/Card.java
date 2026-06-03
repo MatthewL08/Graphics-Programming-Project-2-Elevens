@@ -20,6 +20,13 @@ public class Card {
         this.image = readImage();
         this.hitbox = new Rectangle(-10, -10, image.getWidth(), image.getHeight());
     }
+    public Card() {
+        this.highlight = true;
+        this.suit = "back";
+        this.imageFileName = "card_"+suit+".png";
+        this.image = readImage();
+        this.hitbox = new Rectangle(-10, -10, image.getWidth(), image.getHeight());
+    }
 
     public Rectangle getHitbox() {
         return hitbox;

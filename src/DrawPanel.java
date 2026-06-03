@@ -63,23 +63,36 @@ class DrawPanel extends JPanel implements MouseListener {
         int button = e.getButton();
 
         if (replace.contains(pointA)) {
+            ArrayList<String> selected = new ArrayList<>();
             for (int l = 0; l < xValue.size(); l++) {
                 Point p = new Point(xValue.get(l), yValue.get(l));
                 for (int r = 0; r < cards.length; r++) {
                     for (int c = 0; c < cards.length; c++) {
-                        if (d.getDeck().size() != 0 && (button == 1 || button == 3)) {
-                            if (cards[r][c].getHitbox().contains(p)) {
-                                cards[r][c] = d.getRandomCard();
-                            }
-                        }
-
-                        if (button == 3 && cards[r][c].getHitbox().contains(p)) {
-                            cards[r][c].flipHighlight();
-
+                        if (cards[r][c].getHitbox().contains(p)) {
+                            selected.add(cards[r][c].getValue());
                         }
                     }
                 }
             }
+           if (d.isPlayable(selected)) {
+               for (int l = 0; l < xValue.size(); l++) {
+                   Point p = new Point(xValue.get(l), yValue.get(l));
+                   for (int r = 0; r < cards.length; r++) {
+                       for (int c = 0; c < cards.length; c++) {
+                           if (d.getDeck().size() != 0 && (button == 1 || button == 3)) {
+                               if (cards[r][c].getHitbox().contains(p)) {
+                                   cards[r][c] = d.getRandomCard();
+                               }
+                           }
+
+                           if (button == 3 && cards[r][c].getHitbox().contains(p)) {
+                               cards[r][c].flipHighlight();
+
+                           }
+                       }
+                   }
+               }
+           }
             xValue.clear();
             yValue.clear();
 
