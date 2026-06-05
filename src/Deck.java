@@ -18,7 +18,7 @@ public class Deck {
     }
 
     public Card getRandomCard() {
-        if (deck.size() > 0) {
+        if (!deck.isEmpty()) {
             int random = (int) (Math.random() * deck.size());
             return deck.remove(random);
         }

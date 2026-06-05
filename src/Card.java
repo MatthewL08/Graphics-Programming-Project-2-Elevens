@@ -23,6 +23,7 @@ public class Card {
     public Card() {
         this.highlight = true;
         this.suit = "back";
+        this.value = "-1";
         this.imageFileName = "card_"+suit+".png";
         this.image = readImage();
         this.hitbox = new Rectangle(-10, -10, image.getWidth(), image.getHeight());
