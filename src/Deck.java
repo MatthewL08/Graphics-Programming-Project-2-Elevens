@@ -18,11 +18,11 @@ public class Deck {
     }
 
     public Card getRandomCard() {
-        if (!deck.isEmpty()) {
-            int random = (int) (Math.random() * deck.size());
-            return deck.remove(random);
+        if (deck.isEmpty()) {
+            return new Card();
         }
-        return new Card();
+        int random = (int) (Math.random() * deck.size());
+        return deck.remove(random);
         }
 
     public ArrayList<Card> getDeck() {
